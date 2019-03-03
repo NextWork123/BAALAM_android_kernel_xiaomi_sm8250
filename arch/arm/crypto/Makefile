@@ -68,6 +68,7 @@ nhpoly1305-neon-y := nh-neon-core.o nhpoly1305-neon-glue.o
 curve25519-neon-y := curve25519-core.o curve25519-glue.o
 
 ifdef REGENERATE_ARM_CRYPTO
+
 quiet_cmd_perl = PERL    $@
       cmd_perl = $(PERL) $(<) > $(@)
 
@@ -80,6 +81,8 @@ $(src)/sha256-core.S_shipped: $(src)/sha256-armv4.pl
 $(src)/sha512-core.S_shipped: $(src)/sha512-armv4.pl
 	$(call cmd,perl)
 endif
+
+ccflags-y := -O3
 
 targets += poly1305-core.S sha256-core.S sha512-core.S
 
