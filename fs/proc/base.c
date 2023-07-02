@@ -1192,6 +1192,7 @@ err_unlock:
 		if (!strcmp(task_comm, "id.GoogleCamera") ||
 			!strcmp(task_comm, "ndroid.settings") ||
 			!strcmp(task_comm, "com.android.camera") ||
+			!strcmp(task_comm, "facebook.katana") ||
 			!strcmp(task_comm, "eaurora.snapcam")) {
 			struct task_kill_info *kinfo;
 
