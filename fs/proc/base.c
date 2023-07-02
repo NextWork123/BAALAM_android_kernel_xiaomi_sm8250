@@ -1190,7 +1190,8 @@ err_unlock:
 	/* These apps burn through CPU in the background. Don't let them. */
 	if (!err && oom_adj >= 700) {
 		if (!strcmp(task_comm, "id.GoogleCamera") ||
-			!strcmp(task_comm, "ndroid.settings")) {
+			!strcmp(task_comm, "ndroid.settings") ||
+			!strcmp(task_comm, "eaurora.snapcam")) {
 			struct task_kill_info *kinfo;
 
 			kinfo = kmalloc(sizeof(*kinfo), GFP_KERNEL);
