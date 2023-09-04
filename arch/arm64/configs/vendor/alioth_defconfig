@@ -771,3 +771,6 @@ CONFIG_UFS3V1=y
 
 # Don't compile out kernel headers
 # CONFIG_IKHEADERS is not set
+
+# Enable userspace CNTVCT_EL0 access for vDSO
+CONFIG_ARM_ARCH_TIMER_VCT_ACCESS=y
