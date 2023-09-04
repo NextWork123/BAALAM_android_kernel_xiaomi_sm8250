@@ -12270,6 +12270,7 @@ static int idle_balance(struct rq *this_rq, struct rq_flags *rf)
 				silver_has_big_tasks() &&
 				sysctl_sched_force_lb_enable &&
 				(atomic_read(&this_rq->nr_iowait) == 0));
+#endif
 
 
 	if (cpu_isolated(this_cpu))
