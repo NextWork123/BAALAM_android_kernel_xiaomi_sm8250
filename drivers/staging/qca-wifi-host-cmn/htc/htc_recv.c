@@ -39,29 +39,29 @@ void debug_dump_bytes(uint8_t *buffer, uint16_t length, char *pDescription)
 	offset = 0;
 	byteOffset = 0;
 	for (i = 0; i < length; i++) {
-		A_SNPRINTF(stream + offset, (sizeof(stream) - offset),
-			   "%02X ", buffer[i]);
-		count++;
-		offset += 3;
+        // Increase the buffer size for stream to avoid truncation
+        A_SNPRINTF(stream + offset, (sizeof(stream) - offset), "%02X ", buffer[i]);
+        count++;
+        offset += 3;
 
-		if (count == 16) {
-			count = 0;
-			offset = 0;
-			A_SNPRINTF(byteOffsetStr, sizeof(byteOffset), "%4.4X",
-				   byteOffset);
-			A_PRINTF("[%s]: %s\n", byteOffsetStr, stream);
-			qdf_mem_zero(stream, 60);
-			byteOffset += 16;
-		}
-	}
+        if (count == 16) {
+            count = 0;
+            offset = 0;
+            // Increase the buffer size for byteOffsetStr to avoid truncation
+            A_SNPRINTF(byteOffsetStr, sizeof(byteOffsetStr), "%04X", byteOffset);
+            A_PRINTF("[%s]: %s\n", byteOffsetStr, stream);
+            qdf_mem_zero(stream, 60);
+            byteOffset += 16;
+        }
+    }
 
-	if (offset != 0) {
-		A_SNPRINTF(byteOffsetStr, sizeof(byteOffset), "%4.4X",
-			   byteOffset);
-		A_PRINTF("[%s]: %s\n", byteOffsetStr, stream);
-	}
+    if (offset != 0) {
+        // Increase the buffer size for byteOffsetStr to avoid truncation
+        A_SNPRINTF(byteOffsetStr, sizeof(byteOffsetStr), "%04X", byteOffset);
+        A_PRINTF("[%s]: %s\n", byteOffsetStr, stream);
+    }
 
-	A_PRINTF("<------------------------------------------------->\n");
+    A_PRINTF("<------------------------------------------------->\n");
 }
 #else
 void debug_dump_bytes(uint8_t *buffer, uint16_t length, char *pDescription)
