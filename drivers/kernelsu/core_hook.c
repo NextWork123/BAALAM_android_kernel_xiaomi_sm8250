@@ -306,7 +306,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 				ksu_version = vmin_ksu;
 			u32 version = (u32) ksu_version;
 			if (copy_to_user(arg3, &version, sizeof(version))) {
-				pr_err("prctl reply error, cmd: %d\n", arg2);
+				pr_debug("prctl reply error, cmd: %d\n", arg2);
 			}
 		}
 		return 0;
@@ -380,7 +380,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 						  sizeof(u32) * array_length)) {
 					if (copy_to_user(result, &reply_ok,
 							 sizeof(reply_ok))) {
-						pr_err("prctl reply error, cmd: %d\n",
+						pr_debug("prctl reply error, cmd: %d\n",
 						       arg2);
 					}
 				} else {
@@ -405,7 +405,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 			if (!copy_to_user(arg4, &allow, sizeof(allow))) {
 				if (copy_to_user(result, &reply_ok,
 						 sizeof(reply_ok))) {
-					pr_err("prctl reply error, cmd: %d\n",
+					pr_debug("prctl reply error, cmd: %d\n",
 					       arg2);
 				}
 			} else {
@@ -436,7 +436,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 				return 0;
 			}
 			if (copy_to_user(result, &reply_ok, sizeof(reply_ok))) {
-				pr_err("prctl reply error, cmd: %d\n", arg2);
+				pr_debug("prctl reply error, cmd: %d\n", arg2);
 			}
 		}
 		return 0;
@@ -452,7 +452,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 		// todo: validate the params
 		if (ksu_set_app_profile(&profile, true)) {
 			if (copy_to_user(result, &reply_ok, sizeof(reply_ok))) {
-				pr_err("prctl reply error, cmd: %d\n", arg2);
+				pr_debug("prctl reply error, cmd: %d\n", arg2);
 			}
 		}
 		return 0;
@@ -546,7 +546,7 @@ int ksu_handle_setuid(struct cred *new, const struct cred *old)
 	}
 
 	// umount the target mnt
-	pr_info("handle umount for uid: %d\n", new_uid.val);
+	pr_debug("handle umount for uid: %d\n", new_uid.val);
 
 	// fixme: use `collect_mounts` and `iterate_mount` to iterate all mountpoint and
 	// filter the mountpoint whose target is `/data/adb`
