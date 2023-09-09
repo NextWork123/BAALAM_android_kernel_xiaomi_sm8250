@@ -1327,7 +1327,7 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 	 */
 	if (icl_ua <= 1400000)
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, false, 0);
-	else {
+	else 
 		queue_delayed_work(system_power_efficient_wq, &chip->status_change_work,
 						msecs_to_jiffies(PL_DELAY_MS));
 
