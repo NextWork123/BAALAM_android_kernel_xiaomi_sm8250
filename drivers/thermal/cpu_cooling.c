@@ -189,7 +189,7 @@ void cpu_limits_set_level(unsigned int cpu, unsigned int max_freq)
 			break;
 		}
 	}
-}
+
 
 #ifdef CONFIG_ENERGY_MODEL
 /**
