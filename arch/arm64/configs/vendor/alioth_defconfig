@@ -3446,7 +3446,7 @@ CONFIG_VIDEOBUF2_VMALLOC=y
 #
 # Media ancillary drivers (tuners, sensors, i2c, spi, frontends)
 #
-CONFIG_MEDIA_SUBDRV_AUTOSELECT=y
+# CONFIG_MEDIA_SUBDRV_AUTOSELECT is not set
 CONFIG_MEDIA_ATTACH=y
 CONFIG_VIDEO_IR_I2C=y
 
