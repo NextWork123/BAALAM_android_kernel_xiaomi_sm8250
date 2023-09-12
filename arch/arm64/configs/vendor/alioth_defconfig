@@ -3340,7 +3340,7 @@ CONFIG_DVB_MAX_ADAPTERS=16
 #
 # Media drivers
 #
-CONFIG_MEDIA_USB_SUPPORT=y
+# CONFIG_MEDIA_USB_SUPPORT is not set 
 
 #
 # Webcam devices
