@@ -372,7 +372,6 @@ int tsens_tm_probe(struct platform_device *pdev)
 #endif
 
 	list_add_tail(&tmdev->list, &tsens_device_list);
-#endif
 	platform_set_drvdata(pdev, tmdev);
 
 	return rc;
